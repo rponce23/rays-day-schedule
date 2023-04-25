@@ -1,6 +1,31 @@
 var today = dayjs();
 $('#currentDay').text(today.format('dddd, MMMM D YYYY, h:mm:ss a'));
 
+var nowHour = today.get('hour');
+console.log(nowHour); 
+var c = $('#hourSch');
+var theChilds = c.children();
+console.log("Length = " + theChilds.length);
+console.log(c.children()[0].id);
+
+for(var t = 0; t < theChilds.length; t++){
+  var theTimes = c.children()[t].id;
+  theTimes = theTimes.split('-')[1];
+  //console.log(theTimes);
+  if(theTimes<nowHour){
+    console.log('tiempos menores ' + theTimes)
+  }else if(theTimes>nowHour){
+    console.log('MAYORES '+ theTimes)
+  }else{
+    console.log('El Tiempo actual' + theTimes);
+  }
+
+};
+
+function colorTime(){
+
+};
+
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
