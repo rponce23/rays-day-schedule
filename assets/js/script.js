@@ -3,13 +3,13 @@ $('#currentDay').text(today.format('dddd, MMMM D YYYY, h:mm:ss a'));
 
 var nowHour = today.get('hour');
 console.log(nowHour); 
-var c = $('#hourSch');
-var theChilds = c.children();
+var tableEl = $('#hourSch');
+var theChilds = tableEl.children();
 console.log("Length = " + theChilds.length);
-console.log(c.children()[0].id);
+console.log(theChilds[2]);
 
 for(var t = 0; t < theChilds.length; t++){
-  var theTimes = c.children()[t].id;
+  var theTimes = tableEl.children()[t].id;
   theTimes = theTimes.split('-')[1];
   //console.log(theTimes);
   if(theTimes<nowHour){
@@ -18,6 +18,8 @@ for(var t = 0; t < theChilds.length; t++){
     console.log('MAYORES '+ theTimes)
   }else{
     console.log('El Tiempo actual' + theTimes);
+    //  tableEl.children()[nowHour].removeClass("past");
+    
   }
 
 };
