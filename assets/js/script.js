@@ -8,25 +8,34 @@ var theChilds = tableEl.children();
 console.log("Length = " + theChilds.length);
 console.log(theChilds[2]);
 
-for(var t = 0; t < theChilds.length; t++){
-  var theTimes = tableEl.children()[t].id;
-  theTimes = theTimes.split('-')[1];
-  //console.log(theTimes);
-  if(theTimes<nowHour){
-    console.log('tiempos menores ' + theTimes)
-  }else if(theTimes>nowHour){
-    console.log('MAYORES '+ theTimes)
-  }else{
-    console.log('El Tiempo actual' + theTimes);
-    //  tableEl.children()[nowHour].removeClass("past");
-    
-  }
-
-};
 
 function colorTime(){
+  $(".time-block").each(function () {
+      var theHour = parseInt($(this).attr("id").split("hour")[1]);
+      theHour = -theHour;
+      console.log(theHour, nowHour)
 
+      //check if we've moved past this time
+      if (theHour < nowHour) {
+          $(this).addClass("past");
+          $(this).removeClass("future");
+          $(this).removeClass("present");
+      }
+      else if (theHour === nowHour) {
+          $(this).removeClass("past");
+          $(this).addClass("present");
+          $(this).removeClass("future");
+      }
+      else {
+          $(this).removeClass("present");
+          $(this).removeClass("past");
+          $(this).addClass("future");
+      }
+  })
 };
+colorTime();
+
+
 
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
